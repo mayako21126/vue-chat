@@ -1,10 +1,14 @@
 import Vue from 'vue'
 import Main from './main.vue'
-import Hello from './components/Hello.vue'
+import app from './components/App.vue'
 import VueRouter from 'vue-router'
 import VueResource from 'vue-resource'
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap/dist/js/bootstrap.js'
+import Vuex from 'vuex';
+import store from './store/store';
+
+Vue.use(Vuex);
 //引入组件并使用2个模块
 Vue.use(VueRouter)
 Vue.use(VueResource)
@@ -15,7 +19,12 @@ Vue.http.options.emulateJSON = true
 var router = new VueRouter({
   mode: 'history',
   routes: [
-    {path: '/H', component: Hello}
+    {
+      path: '/',
+      redirect:'/chat'
+
+    },
+    {path: '/chat', component: app}
   ]
 })
 //路由切换前后钩子函数
@@ -33,6 +42,7 @@ router.afterEach(function (transition) {
 var vm = new Vue({
   el: '#app',
   router: router,
-  render: h => h(Main)
+  render: h => h(Main),
+  store: store
 })
 

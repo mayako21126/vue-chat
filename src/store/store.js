@@ -9,11 +9,28 @@ Vue.use(Vuex);
 
 const now = new Date();
 const store = new Vuex.Store({
+  actions:{
+    initData({ commit }) { commit('INIT_DATA')},
+    sendMessage: ({ commit }, content) => commit('SEND_MESSAGE', content),
+    selectSession: ({ commit }, id) => commit('SELECT_SESSION', id),
+    search: ({ commit }, value) => commit('SET_FILTER_KEY', value)
+  },
+  getters: {
+    user: ({ user }) => user,
+    filterKey: ({ filterKey }) => filterKey,
+    sessions: ({ sessions, filterKey }) => {
+      let result = sessions.filter(session => session.user.name.includes(filterKey));
+      return result;
+    },
+    session: ({ sessions, currentSessionId }) => sessions.find(session => session.id === currentSessionId),
+    // 当前会话index
+    currentId: ({ currentSessionId }) => currentSessionId
+  },
     state: {
         // 当前用户
         user: {
             name: 'coffce',
-            img: 'dist/images/1.jpg'
+            img: 'static/images/1.jpg'
         },
         // 会话列表
         sessions: [
@@ -21,7 +38,7 @@ const store = new Vuex.Store({
                 id: 1,
                 user: {
                     name: '示例介绍',
-                    img: 'dist/images/2.png'
+                    img: 'static/images/2.png'
                 },
                 messages: [
                     {
@@ -37,7 +54,7 @@ const store = new Vuex.Store({
                 id: 2,
                 user: {
                     name: 'webpack',
-                    img: 'dist/images/3.jpg'
+                    img: 'static/images/3.jpg'
                 },
                 messages: []
             }
@@ -87,7 +104,7 @@ store.watch(
 
 export default store;
 export const actions = {
-    initData: ({ dispatch }) => dispatch('INIT_DATA'),
+    initData: ({ dispatch }) => commit('INIT_DATA'),
     sendMessage: ({ dispatch }, content) => dispatch('SEND_MESSAGE', content),
     selectSession: ({ dispatch }, id) => dispatch('SELECT_SESSION', id),
     search: ({ dispatch }, value) => dispatch('SET_FILTER_KEY', value)

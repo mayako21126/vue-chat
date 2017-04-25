@@ -1,6 +1,7 @@
 <template>
   <div class="hello">
     <h1>{{ msg }}</h1>
+    <button @click="change">xx</button>
   </div>
 </template>
 
@@ -9,6 +10,11 @@ export default {
   data () {
     return {
       msg: 'Hello World!'
+    }
+  },
+  methods:{
+    change(){
+      this.msg='xxx';
     }
   }
 }

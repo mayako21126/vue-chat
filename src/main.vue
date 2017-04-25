@@ -1,11 +1,5 @@
 <template>
   <div id="">
-    <input v-model="num1"/>
-    <h1>Hello App!</h1>
-
-    <p>
-      <router-link to="/H">Go to Barxxx</router-link>
-    </p>
     <router-view></router-view>
   </div>
 </template>
@@ -36,7 +30,9 @@ a{
     background-color: var(--mainColor);
     @apply --danger-theme;
   }
-
+  ul li{
+    list-style:none;
+  }
   html {
     height: 100%;
   }
