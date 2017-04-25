@@ -1,0 +1,9 @@
+# Created by .ignore support plugin (hsz.mobi)
+dist/
+/dist
+.idea/
+/.idea
+.git/
+/.git
+/node_modules
+node_modules/
