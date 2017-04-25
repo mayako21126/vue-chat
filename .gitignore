@@ -7,15 +7,4 @@ dist/
 /.git
 /node_modules
 node_modules/
-.babelrc
-.editorconfig
-.eslintignore
-.eslintrc.js
-README.md
-build/
-chat/
-config/
-index.html
-package.json
-src/
-static/
+
