@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Main from './main.vue'
 import app from './components/App.vue'
+import hello from './components/Hello.vue'
 import VueRouter from 'vue-router'
 import VueResource from 'vue-resource'
 import 'bootstrap/dist/css/bootstrap.css'
@@ -24,6 +25,7 @@ var router = new VueRouter({
       redirect:'/chat'
 
     },
+    {path: '/hello', component: hello},
     {path: '/chat', component: app}
   ]
 })

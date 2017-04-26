@@ -28,8 +28,7 @@ export default {
         // 发送消息后滚动到底部
         'scroll-bottom':function(el) {
           componentUpdated: {
-            setTimeout(()=>{el.scrollTop = el.scrollTop + el.scrollHeight - el.clientHeight},5)
-            ;
+            setTimeout(()=>{el.scrollTop = el.scrollTop + el.scrollHeight - el.clientHeight},5);
           }
         }
     }

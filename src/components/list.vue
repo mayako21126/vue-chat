@@ -12,7 +12,7 @@ export default {
     })
   },methods:{
     ...mapActions({
-      selectSession: 'selectSession' // 映射 this.add() 为 this.$store.dispatch('increment')
+      selectSession: 'selectSession'
     })
   }
 };

@@ -17,6 +17,10 @@ const store = new Vuex.Store({
   },
   getters: {
     user: ({ user }) => user,
+//    等于
+//  (state) => {
+//  return state.user
+//},
     filterKey: ({ filterKey }) => filterKey,
     sessions: ({ sessions, filterKey }) => {
       let result = sessions.filter(session => session.user.name.includes(filterKey));
@@ -30,30 +34,38 @@ const store = new Vuex.Store({
         // 当前用户
         user: {
             name: 'coffce',
-            img: 'static/images/1.jpg'
+            img: 'static/images/1.jpg',
+            userID:0
         },
         // 会话列表
         sessions: [
             {
                 id: 1,
                 user: {
-                    name: '示例介绍',
-                    img: 'static/images/2.png'
+                    name: '测试',
+                    img: 'static/images/2.png',
+                    userID:1
                 },
                 messages: [
                     {
-                        content: 'Hello，这是一个基于Vue + Vuex + Webpack构建的简单chat示例，聊天记录保存在localStorge, 有什么问题可以通过Github Issue问我。',
-                        date: now
+                        content: '休闲鞋',
+                        date: now,
+                        id:2
                     }, {
-                        content: '项目地址: https://github.com/coffcer/vue-chat',
-                        date: now
-                    }
+                        content: '123',
+                        date: now,
+                        id:3
+                    },{
+                      content:'我自己',
+                      date:now,
+                      self:true
+                  }
                 ]
             },
             {
                 id: 2,
                 user: {
-                    name: 'webpack',
+                    name: '123',
                     img: 'static/images/3.jpg'
                 },
                 messages: []
