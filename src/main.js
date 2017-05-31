@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Main from './main.vue'
 import app from './components/App.vue'
+import mobile from './components/mobile.vue'
 import hello from './components/Hello.vue'
 import VueRouter from 'vue-router'
 import VueResource from 'vue-resource'
@@ -11,10 +12,10 @@ import store from './store/store';
 
 Vue.use(Vuex);
 //引入组件并使用2个模块
-Vue.use(VueRouter)
-Vue.use(VueResource)
+Vue.use(VueRouter);
+Vue.use(VueResource);
 
-Vue.http.options.emulateJSON = true
+Vue.http.options.emulateJSON = true;
 
 //hash路由开启
 var router = new VueRouter({
@@ -26,7 +27,8 @@ var router = new VueRouter({
 
     },
     {path: '/hello', component: hello},
-    {path: '/chat', component: app}
+    {path: '/chat', component: app},
+    {path: '/mobile', component: mobile}
   ]
 })
 //路由切换前后钩子函数

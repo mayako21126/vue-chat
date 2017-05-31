@@ -1,6 +1,11 @@
 <script type="text/ecmascript-6">
   import { mapGetters} from 'vuex'
 export default {
+  data(){
+    return {
+
+    }
+  },
   computed: {
     ...mapGetters([
       'session',
@@ -11,10 +16,28 @@ export default {
     this.$nextTick(
       function(){
         var el = this.$el;
-        console.log(el)
         el.scrollTop = el.scrollTop + el.scrollHeight - el.clientHeight
       }
     )},
+  methods:{
+    showTime(x,xx){
+      if(xx!=0){
+        var date = new Date(this.session.messages[xx-1].date);
+        var date1 = new Date(x);
+
+        if((date1 - date)<1000*60){
+          return false;
+        }else{
+          return true;
+        }
+
+      }else{
+        return true;
+      }
+
+
+    }
+  },
     filters: {
         // 将日期过滤为 hour:minutes
         time (date) {
@@ -28,6 +51,7 @@ export default {
         // 发送消息后滚动到底部
         'scroll-bottom':function(el) {
           componentUpdated: {
+
             setTimeout(()=>{el.scrollTop = el.scrollTop + el.scrollHeight - el.clientHeight},5);
           }
         }
@@ -38,8 +62,8 @@ export default {
 <template>
 <div class="message" v-scroll-bottom="session.messages">
     <ul v-if="session">
-        <li v-for="item in session.messages">
-            <p class="time">
+        <li v-for="(item,index) in session.messages">
+            <p class="time" v-if="showTime(item.date,index)">
                 <span>{{ item.date | time }}</span>
             </p>
             <div class="main" :class="{ self: item.self }">

@@ -42,7 +42,7 @@ const store = new Vuex.Store({
             {
                 id: 1,
                 user: {
-                    name: '测试',
+                    name: '爱新',
                     img: 'static/images/2.png',
                     userID:1
                 },
@@ -65,7 +65,7 @@ const store = new Vuex.Store({
             {
                 id: 2,
                 user: {
-                    name: '123',
+                    name: 'Virue',
                     img: 'static/images/3.jpg'
                 },
                 messages: []
