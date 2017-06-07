@@ -10,8 +10,7 @@ export default {
   },
     computed:{
       ...mapGetters([
-        'user',
-        'session'
+        'user'
       ])
     },
     methods: {

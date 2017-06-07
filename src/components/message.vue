@@ -1,5 +1,5 @@
 <script type="text/ecmascript-6">
-  import { mapGetters} from 'vuex'
+  import { mapGetters,mapState} from 'vuex'
 export default {
   data(){
     return {
@@ -8,9 +8,11 @@ export default {
   },
   computed: {
     ...mapGetters([
-      'session',
       'user'
-    ])
+    ]),
+    ...mapState({
+      'session':'session'
+    })
   },
   mounted () {
     this.$nextTick(
@@ -22,7 +24,7 @@ export default {
   methods:{
     showTime(x,xx){
       if(xx!=0){
-        var date = new Date(this.session.messages[xx-1].date);
+        var date = new Date(this.session.messages[xx-1].RegistTime);
         var date1 = new Date(x);
 
         if((date1 - date)<1000*60){
@@ -63,12 +65,12 @@ export default {
 <div class="message" v-scroll-bottom="session.messages">
     <ul v-if="session">
         <li v-for="(item,index) in session.messages">
-            <p class="time" v-if="showTime(item.date,index)">
-                <span>{{ item.date | time }}</span>
+            <p class="time" v-if="showTime(item.RegistTime,index)">
+                <span>{{ item.RegistTime | time }}</span>
             </p>
-            <div class="main" :class="{ self: item.self }">
-                <img class="avatar" width="30" height="30" :src="item.self ? user.img : session.user.img" />
-                <div class="text">{{ item.content }}</div>
+            <div class="main" :class="{ self: item.SelfID == 12}">
+                <img class="avatar" width="30" height="30" :src="item.SelfID == 12 ? user.img : session.user.img" />
+                <div class="text">{{ item.MSGContent }}</div>
             </div>
         </li>
     </ul>

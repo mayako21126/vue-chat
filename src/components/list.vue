@@ -5,10 +5,11 @@ import { mapActions,mapGetters,mapState} from 'vuex'
 export default {
   computed: {
     ...mapGetters([
-      'sessions'
+      'sessions','lists'
     ]),
     ...mapState({
-      'currentId':'currentSessionId'
+      'currentId':'currentSessionId',
+      'show':'show'
     })
   },methods:{
     ...mapActions({
@@ -20,8 +21,8 @@ export default {
 
 <template>
 <div class="list">
-    <ul>
-        <li v-for="item in sessions" :class="{ active: item.id === currentId }" @click="selectSession(item.id)">
+    <ul v-if="show">
+        <li v-for="(item,i) in lists" :class="{ active: item.id === currentId }" @click="selectSession(i)" >
             <img class="avatar"  width="30" height="30" :alt="item.user.name" :src="item.user.img">
             <p class="name">{{item.user.name}}</p>
         </li>
