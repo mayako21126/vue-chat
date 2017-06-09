@@ -7,7 +7,6 @@
     components: { TextA, Message },
     created () {
       this.initData();
-      this.selectSession(1);
     },
     methods:{
       ...mapActions({

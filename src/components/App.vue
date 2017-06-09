@@ -9,7 +9,7 @@ import Message from '../components/message';
 export default {
     components: { Card, List, TextA, Message },
     created () {
-      this.initData();
+      this.initData(0);
     },
   methods:{
     ...mapActions({

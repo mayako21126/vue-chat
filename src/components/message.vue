@@ -11,7 +11,9 @@ export default {
       'user'
     ]),
     ...mapState({
-      'session':'session'
+      'session':'session',
+      'selfID':'selfID',
+      'show':'show'
     })
   },
   mounted () {
@@ -62,19 +64,20 @@ export default {
 </script>
 
 <template>
-<div class="message" v-scroll-bottom="session.messages">
-    <ul v-if="session">
+<div class="message" v-scroll-bottom="session.messages" >
+    <ul v-if="show">
         <li v-for="(item,index) in session.messages">
             <p class="time" v-if="showTime(item.RegistTime,index)">
                 <span>{{ item.RegistTime | time }}</span>
             </p>
-            <div class="main" :class="{ self: item.SelfID == 12}">
-                <img class="avatar" width="30" height="30" :src="item.SelfID == 12 ? user.img : session.user.img" />
+            <div class="main" :class="{ self: item.SelfID == selfID}">
+                <img class="avatar" width="30" height="30" :src="item.SelfID == selfID ? user.img : session.user.img" />
                 <div class="text">{{ item.MSGContent }}</div>
             </div>
         </li>
     </ul>
 </div>
+
 </template>
 
 <style scoped>

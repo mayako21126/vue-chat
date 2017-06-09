@@ -6,6 +6,7 @@ var baseURL = function(){
   return (testSwitch==true)?'http://47.92.106.252/':'/';
 };
 var auth=function(x){
+  console.log(x)
   if(x.body.errorCode=='1'){
     return true;
   }else{

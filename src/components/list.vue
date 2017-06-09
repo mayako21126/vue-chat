@@ -24,7 +24,7 @@ export default {
     <ul v-if="show">
         <li v-for="(item,i) in lists" :class="{ active: item.id === currentId }" @click="selectSession(i)" >
             <img class="avatar"  width="30" height="30" :alt="item.user.name" :src="item.user.img">
-            <p class="name">{{item.user.name}}</p>
+            <p class="name ">{{item.user.name}}</p><span class="badge pull-right" v-text="item.chatNum" v-if="item.chatNum>0"></span>
         </li>
     </ul>
 </div>
